@@ -1,7 +1,7 @@
 class Ana:
 
-    def saludar():
+    def saludar(self):
         print("Hola soy Ana")
     
-    def yo_soy():
+    def yo_soy(self):
         return "Ana"

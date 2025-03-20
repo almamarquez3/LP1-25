@@ -1,7 +1,7 @@
 class Miguel:
 
-    def saludar():
+    def saludar(self):
         print("Hola soy Miguel")
     
-    def yo_soy():
+    def yo_soy(self):
         return "Miguel"

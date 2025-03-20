@@ -1,7 +1,7 @@
 class Pepe:
 
-    def saludar():
+    def saludar(self):
         print("Hola soy Pèpe")
     
-    def yo_soy():
+    def yo_soy(self):
         return "Pepe"
