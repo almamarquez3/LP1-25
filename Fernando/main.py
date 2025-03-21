@@ -121,5 +121,6 @@ def main():
     print(GATO)
 
     print(PEPE.auto.combustible)
+
 if __name__ == "__main__":
     main()
