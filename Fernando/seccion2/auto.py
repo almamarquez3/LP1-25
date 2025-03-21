@@ -1,5 +1,6 @@
 class Auto:
 
+
     def __init__(self):
         self.combustible = 50
         self.posicion = 0

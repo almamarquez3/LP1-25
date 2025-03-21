@@ -1,3 +1,7 @@
+from objetos.dibujador import Dibujador
+
+
+
 class Pez:
 
     
@@ -10,3 +14,6 @@ class Pez:
     
     def hacer_sonido(self):
         return "glu glu"
+    
+    def __str__(self):
+        return self.dibujador.dibujo_pez()

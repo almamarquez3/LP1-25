@@ -1,5 +1,6 @@
 class HogarDeMascotas:
 
+
     def __init__(self):
         self.mascota_en_transito = None
     
