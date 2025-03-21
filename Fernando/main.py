@@ -1,5 +1,3 @@
-from objetos.dibujador import Dibujador
+from seccion2.gato import Gato
 
-print(Dibujador().dibujo_perro())
-print(Dibujador().dibujo_gato())
-print(Dibujador().dibujo_pez())
+print(Gato().hacer_sonido())
