@@ -1,7 +1,7 @@
 class Trayecto:
 
 
-    def mostrar_posicion(km: int) -> str:
+    def mostrar_posicion(self, km: int) -> str:
         if km <=1:
             return "Casa de pepe"
         elif km <= 2:

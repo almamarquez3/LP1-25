@@ -40,3 +40,8 @@ class Pepe:
     def tener_acompanante(self, acompanante):
         if self.companero is None and not self.auto is None:
             self.companero = acompanante
+    
+    def mirar_posicion(self):
+        if self.auto is None:
+            return 0
+        return self.auto.obtener_posicion()

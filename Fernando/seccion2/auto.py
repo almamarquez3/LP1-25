@@ -2,7 +2,7 @@ class Auto:
 
 
     def __init__(self):
-        self.combustible = 50
+        self.combustible = 55
         self.posicion = 0
     
     def moverse(self):
