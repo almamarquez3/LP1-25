@@ -1,5 +1,5 @@
-from objetos.luz_roja import LuzRoja
+from objetos.dibujador import Dibujador
 
-luz = LuzRoja().siguiente_color()
-
-print(luz.debe_parar())
+print(Dibujador().dibujo_perro())
+print(Dibujador().dibujo_gato())
+print(Dibujador().dibujo_pez())

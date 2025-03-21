@@ -1,5 +1,6 @@
 class Miguel:
 
+
     def saludar(self):
         print("Hola soy Miguel")
     
