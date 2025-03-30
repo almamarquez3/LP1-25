@@ -1,15 +1,21 @@
 class cPersona:
+    
+    
     def __init__(self, nombre):
         self.__nombre = nombre
 
     def saludar(self):
         return f"Hola, soy {self.__nombre}"
+    
     def yo_soy(self):
         return f"{self.__nombre}"
     
 class cSemaforo:
+
+
     def __init__(self, color:str):
         self.__color = color
+
     def debe_parar(self)->bool:
         if self.__color == "rojo":
             return True
@@ -18,6 +24,7 @@ class cSemaforo:
         if self.__color == "verde":
             return False
         else: return False
+
     def puede_cruzar(self)->bool:
         if self.__color == "rojo":
             return False
@@ -26,6 +33,7 @@ class cSemaforo:
         if self.__color == "verde":
             return True
         else: return False
+
     def siguiente_color(self)->str:
         if self.__color == "rojo":
             self.__color = "verde"
@@ -37,12 +45,16 @@ class cSemaforo:
             self.__color = "amarillo"
             return "Luz_amarilla"
         else: return "Color_invalido"
+
 class cDibujador:
+
+
     def dibujo_perro():
         print("   ^..^      /")
         print("  /_/\\\\_____/")
         print("     /\\\\   /\\\\")
         print("    /  \\\\ /  \\\\")
+
     def dibujo_gato():
         print("                       _")
         print("                      | |")
@@ -58,6 +70,7 @@ class cDibujador:
         print("     | | \\        || |")
         print("     | |\\ \\       || )")
         print("    (_/ (_/      ((_/")
+    
     def dibujo_pez():
         print("     /`·.¸")
         print("    /¸...¸`:·")
@@ -65,6 +78,7 @@ class cDibujador:
         print(": © ):´;      ¸  {")
         print(" `·.¸ `·  ¸.·´\\`·¸)")
         print("     `\\´´\\¸.·")
+    
     def se_dibujarlo(animal:str):
         if animal == "perro":
             print("Puedo dibujarlo")
@@ -73,31 +87,41 @@ class cDibujador:
         if animal == "pez":
             print("Puedo dibujarlo")
         else: print("No puedo dibujarlo")
+
 class cTrayecto():
-        def mostrar_posicion(km:int)->str:
-            if km >=0 and km <=1:
-                print("Casa de pepe")
-            if km == 2:
-                print("Casa de Ana")
-            if km == 3:
-                print("Casa de Miguel")
-            if km == 4:
-                print("Avenida")
-            if km == 5:
-                print("Refugio de mascotas")
-            if km == 6:
-                print("Avenida")
-            if km == 7:
-                print("Casa del novio de Ana")
+        
+        
+    def mostrar_posicion(km:int)->str:
+        if km >=0 and km <=1:
+            print("Casa de pepe")
+        if km == 2:
+            print("Casa de Ana")
+        if km == 3:
+            print("Casa de Miguel")
+        if km == 4:
+            print("Avenida")
+        if km == 5:
+            print("Refugio de mascotas")
+        if km == 6:
+            print("Avenida")
+        if km == 7:
+            print("Casa del novio de Ana")
+
 class cPerro():
     
+
     def __init__(self,duenio:None):
         pass
+
     def ser_adoptado(self,duenio:any):
         self.duenio = duenio
+
     def hacer_sonido(self)->str:
         return "Guau"
+
 class cGato:
+
+
     def __init__(self,duenio:None):
         pass
 
@@ -106,7 +130,10 @@ class cGato:
 
     def hacer_sonido(self)->str:
         return "Miau"
+
 class cPez:
+
+
     def __init__(self,duenio:None):
         pass
 
@@ -115,7 +142,33 @@ class cPez:
 
     def hacer_sonido(self)->str:
         return "Glu Glu"
+
+class Mascota(): #si unificamos perro, gato y pez
+    
+    
+    def __init__(self, Tipo_Animal="0",duenio="0") -> None:
+        self.Tipo_Animal = Tipo_Animal.lower() #asi ya esta en minuscula para futuras comparaciones
+        self.duenio = duenio
+        
+    def ser_adoptado(self, duenioNuevo:str):
+        if self.duenio == "0":
+            self.duenio = duenioNuevo
+            print(f"El {self.Tipo_Animal} tiene duenio nuevo y es {self.duenio}")
+        else:
+            print(f"El {self.Tipo_Animal} ya tiene duenio y es {self.duenio}")
+    
+    def hacer_sonido(self)->str:
+        if self.Tipo_Animal == "perro":
+            return "Guau"
+        elif self.Tipo_Animal == "gato":
+            return "Miau"
+        elif self.Tipo_Animal == "pez":
+            return "Glu Glu"
+        else:
+            return f"No se que sonido hace el animal {self.Tipo_Animal}"
 class cHogar_mascotas():
+
+
     def __init__(self, mascota:None):
         pass
 
@@ -131,13 +184,18 @@ class cHogar_mascotas():
         else: 
             print("No hay mascota para dar en adopcion")
             return False
+
 class cCuenta_bancaria:
+
+
     def __init__(self):
         self.saldo = 0
+
     def depositar(self, monto:int)->bool:
         if monto > 0:
             self.saldo += monto
             return True
+        
     def debitar(self, monto:int)->bool:
         if monto > 0 and monto <= self.saldo:
             self.saldo -= monto
@@ -148,6 +206,8 @@ class cCuenta_bancaria:
             return False
         
 class cAuto:
+
+
     def __init__(self):
         self.tanque=50
         self.posicion=0
@@ -160,6 +220,7 @@ class cAuto:
         else:
             print("Movimiento fallido")
             return False
+        
     def cargar_combustible(self,litros:int)->int:
         if(self.tanque + litros > 60):
             self.tanque=60
@@ -167,14 +228,18 @@ class cAuto:
         if(self.tanque + litros < 60):
             self.tanque+=litros
             return 0
+        
     def mostrar_posicion(self)->int:
         return self.posicion
 class cPepe:
+
+
     def __init__(self,nombre:str,cuenta:cCuenta_bancaria):
         self.nombre=nombre
         self.cuenta=cuenta
         self.auto=None
         self.acompaniante=None
+    
     def comprar_auto(self,auto:cAuto)->bool:
         if self.cuenta.saldo >= 7000000:
             self.auto=auto
@@ -182,6 +247,7 @@ class cPepe:
             return True
         else:
             return False
+   
     def manejar(self,semaforo:cSemaforo)->bool:
         if semaforo.debe_parar()==False and self.auto.moverse()==True:
             print("Puede viajar")
@@ -189,6 +255,7 @@ class cPepe:
         if semaforo.debe_parar()==True:
             print("Ahora no puedo")
             return False
+    
     def tener_acompaniante(self,acompaniante:any):
         if(self.auto!=None and self.acompaniante==None):
             self.acompaniante=acompaniante
