@@ -1,12 +1,12 @@
 import datetime
 from typing import List, Dict, Optional, Tuple, TYPE_CHECKING
-
+from pacientes.donante import Donante
+from pacientes.receptor import Receptor
+    
 if TYPE_CHECKING:
     from pacientes.paciente import Paciente
-    from pacientes.donante import Donante
-    from pacientes.receptor import Receptor
     from organos.organo import Organo
-    from centros_de_salud.centro_de_salud import CentroDeSalud
+    from centrosdesalud.centro_de_salud import CentroDeSalud
 
 
 class INCUCAI:

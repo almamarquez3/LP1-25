@@ -1,5 +1,5 @@
 from typing import List, Optional
-from vehiculo import Vehiculo
+from centrosdesalud.vehiculo import Vehiculo
 
 class Avion(Vehiculo):
     """

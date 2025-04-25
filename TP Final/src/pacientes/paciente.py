@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Optional
 
 if TYPE_CHECKING:
-    from centros_de_salud.centro_de_salud import CentroDeSalud  # Evita la dependencia circular
+    from centrosdesalud.centro_de_salud import CentroDeSalud  # Evita la dependencia circular
 
 class Paciente(ABC):
     """
