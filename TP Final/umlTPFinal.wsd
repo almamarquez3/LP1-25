@@ -1,0 +1,136 @@
+@startuml umlTPFinal
+' Definición del diagrama de clases para el sistema de gestión de donantes y receptores de órganos
+
+' Clases
+abstract class Paciente {
+  - nombre: str
+  - dni: str (unique)
+  - fechaNacimiento: datetime.date
+  - sexo: str
+  - telefono: str
+  - tipoSangre: str
+  - centroSaludAsociado: CentroDeSalud
+  - estado: str
+  --
+  + __init__(...)
+  + getDni(): str
+  + setTelefono(telefono: str): void
+  + __str__(): str
+  + __eq__(other: Paciente): bool
+}
+
+class Donante extends Paciente {
+  - fechaHoraFallecimiento: datetime.datetime
+  - fechaHoraComienzoAblacion: datetime.datetime
+  - organosADonar: Organo[]
+  - compatibilidad: int
+  --
+  + __init__(...)
+  + quitarOrganoDonado(organo: Organo): void
+  + __str__(): str
+}
+
+class Receptor extends Paciente {
+  - organoARecibir: Organo
+  - fechaAgregadoListaEspera: datetime.date
+  - prioridad: int
+  - patologia: str
+  - compatibilidad: int
+  - gradoUrgencia: int
+  --
+  + __init__(...)
+  + setEstado(estado: str): void
+  + setPrioridad(prioridad: int): void
+  + __str__(): str
+  + __lt__(other: Receptor): bool
+}
+
+class Organo {
+  - nombre: str
+  - fechaHoraAblacion: datetime.datetime
+  --
+  + __init__(...)
+  + setFechaHoraAblacion(fechaHora: datetime.datetime): void
+  + __str__(): str
+}
+
+class CentroDeSalud {
+  - nombre: str
+  - direccion: str
+  - partido: str
+  - provincia: str
+  - telefono: str
+  - cirujanos: Cirujano[]
+  - vehiculos: Vehiculo[]
+  --
+  + __init__(...)
+  + calcularTiempoViaje(distancia: float, ubicacionReceptor: str): float
+  + seleccionarVehiculo(distancia: float, ubicacionReceptor: str, gradoUrgencia: int): Vehiculo
+  + asignarCirujano(fechaOperacion: datetime.date): Cirujano
+  + __str__(): str
+}
+
+abstract class Vehiculo {
+  - velocidad: float
+  - registroViajes: str[]
+  - tipo: str (opcional)
+  --
+  + __init__(...)
+  + calcularTiempoViaje(distancia: float, trafico: float): float (abstract)
+  + __str__(): str
+}
+
+class Terrestre extends Vehiculo {
+  --
+  + calcularTiempoViaje(distancia: float, trafico: float) : float
+  + __str__(): str
+}
+
+class Helicoptero extends Vehiculo {
+  --
+  + calcularTiempoViaje(distancia: float, trafico: float = 0): float
+  + __str__(): str
+}
+
+class Avion extends Vehiculo {
+  --
+  + calcularTiempoViaje(distancia: float, trafico: float = 0): float
+  + __str__(): str
+}
+
+class Cirujano {
+  - nombre: str
+  - especialidad: str
+  --
+  + __init__(...)
+  + calcularExitoTrasplante(organo: Organo): bool
+  + __str__(): str
+}
+
+class INCUCAI {
+  - donantes: Donante[]
+  - receptores: Receptor[]
+  - centrosSalud: CentroDeSalud[]
+  --
+  + __init__()
+  + registrarPaciente(paciente: Paciente): void
+  + actualizarListaDonantes(): void
+  + quitarReceptor(receptor: Receptor): void
+  + buscarPacientesPorCentroSalud(centroSalud: CentroDeSalud): Paciente[]
+  + buscarPrioridadReceptor(receptor: Receptor): int
+  + imprimirListaDonantes(): void
+  + imprimirListaReceptores(): void
+  + asignarOrganoAReceptor(donante: Donante, receptor: Receptor, organo: Organo): void
+  + ordenarReceptoresParaTrasplante(organo: Organo, donante: Donante, centrosSalud: CentroDeSalud[]): Receptor[]
+  + __str__(): str
+}
+
+' Relaciones
+Paciente -- CentroDeSalud : asociado a
+Donante -- Organo : dona
+Receptor -- Organo : recibe
+CentroDeSalud -- Vehiculo : tiene
+CentroDeSalud -- Cirujano : tiene
+Donante -- Receptor : posible match
+
+@enduml
